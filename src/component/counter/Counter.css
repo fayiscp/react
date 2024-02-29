@@ -1,0 +1,46 @@
+.box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    height: 90vh;
+}
+
+
+.btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+
+}
+
+.btn > button{
+    margin: 5px;
+    padding: 5px;
+    border-radius: 5px;
+    color: aqua;
+    background-color: red;
+    font-size: 20px;
+    font-style: italic;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.counter{
+    text-align: center;
+    font-size: 70px;
+    
+}
+
+.boxx{
+
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.btn > button:hover{
+    cursor: pointer;
+    color: aliceblue;
+    background-color: black;
+}
