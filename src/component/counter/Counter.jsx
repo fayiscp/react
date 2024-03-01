@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./Counter.css"
 
 function Counter() {
@@ -6,6 +6,10 @@ function Counter() {
     let [state, setState] = useState(true)
     let [color, setColor] = useState('red')
     let [title, setTitle] = useState('')
+
+
+
+
 
     function getValue(event) {
         console.log(event.target.value);
@@ -49,7 +53,7 @@ function Counter() {
 
                     <button onClick={hideShow}>{state ? 'HIDE' : 'SHOW'}</button>
                 </div>
-                <input onChange={getValue} type="text"/>
+                <input onChange={getValue} type="text" />
             </div>
         </div>
     )

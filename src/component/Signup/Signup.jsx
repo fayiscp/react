@@ -21,29 +21,25 @@ function Signup() {
     }
 
     return (
-        <div className="container">
-            <div className="signup-main">
+        <div className="signup-main">
+            <div className="signup-box">
 
                 <p>{data.username}--</p>
                 <p>{data.email}</p>
                 <p>{data.password}</p>
 
-            <form>
                 <h1>SIGNUP PAGE</h1>
+            <form>
 
-                <label for="username">USERNAME</label>
-                <input onChange={getData} type="text" id="username" name="username" />
+                <input onChange={getData} type="text" placeholder="Username" name="username" />
 
-                <label for="number">NUMBER</label>
-                <input onChange={getData} type="number" id="number" name="number" />
+                <input onChange={getData} type="number" placeholder="Number"  name="number" />
 
-                <label for="email">EMAIL</label>
-                <input onChange={getData} type="email" id="email" name="email" />
+                <input onChange={getData} type="email" placeholder="email" name="email" />
 
-                {/* <label for="password">PASSWORD</label> */}
-                <input onChange={getData} type="password" id="password" placeholder="password" name="password" />
+                <input onChange={getData} type="password"  placeholder="password" name="password" />
 
-                <button>SIGNUP</button>
+                <button type="submit">SIGNUP</button>
 
                 <Link to={'/login'}>
 

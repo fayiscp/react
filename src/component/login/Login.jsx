@@ -25,33 +25,30 @@ function Login() {
 
 
     return (
-        <div className="main">
+        <div className="login-page">
 
             <p>{data.username} --</p>
             <br />
             <p>{data.email} --</p>
             <br />
             <p>{data.password}-- </p>
-            <div className="hello">
+            <div className="login-box">
 
 
 
-                <form>
                     <h1>Login Page</h1>
-                    <div className='uname'>
-                        <label for="username">username</label>
-                        <input onChange={getData} type="text" id="username" name="username" />
+                <form>
+    
+            
+                        <input onChange={getData} type="text" placeholder='Enter your username' name="username" />
 
-                        <label for="password">password</label>
-                        <input onChange={getData} type="password" id="password" name="password" />
+                    
+                        <input onChange={getData} type="password"  placeholder='Enter your password' name="password" />
 
-                        <label for="email">Email</label>
-                        <input onChange={getData} type="email" id='email' name='email' />
+                        <input onChange={getData} type="email" placeholder='Enter your em' name='email' />
 
-                    </div>
-                    <div className="login-button">
-                        <button>Login</button>
-                    </div>
+                
+                        <button type='submit'>Login</button>
 
                     <Link to='/signup'>
                         <p>Don't have an account?</p>
