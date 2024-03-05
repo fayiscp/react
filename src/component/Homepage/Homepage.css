@@ -1,12 +1,15 @@
 .card{
     border: 1px solid;
-    height: 300px;
-    width: 150px;
+    height: 100vh;
+    width: 100vh;
+    background-color: gray;
+    color: white;
+    border-radius: 8px;
+
 
 }
 .card-container{
-    display: flex;
-   gap: 10px;
-   flex-wrap: wrap;
+  
+   
     
 }

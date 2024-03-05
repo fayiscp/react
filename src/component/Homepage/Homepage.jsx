@@ -6,75 +6,74 @@ import axios from "axios"
 
 let noPic = 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png'
 
+
+
+
 function Homepage() {
 
     let [users, setUsers] = useState([])
+    let [search, setSearch] = useState('')
+    let [movie, setMovie] = useState({})
+    let [state,setState]=useState(false)
+
+    function getValue(event) {
+        console.log(event.target.value);
+        setSearch(event.target.value)
+    }
 
     useEffect(() => {
-        axios.get('https://jsonplaceholder.typicode.com/todos').then((res) => {
-            console.log('helloo', res.data);
-            setUsers(res.data)
+        axios.get(`http://www.omdbapi.com/?apikey=169950b9&s=${search}`).then((res) => {
+            console.log('helloo', res);
+            setUsers(res.data.Search)
+
         }).catch((err) => {
             console.log(err);
         })
-    }, [])
 
-    let [state, setState] = useState([
-        {
-            name: 'aboo',
-            age: 45,
-            place: 'ekm',
-            profilepic: 'https://images.ctfassets.net/h6goo9gw1hh6/2sNZtFAWOdP1lmQ33VwRN3/24e953b920a9cd0ff2e1d587742a2472/1-intro-photo-final.jpg?w=1200&h=992&fl=progressive&q=70&fm=jpg'
-        },
-        {
-            name: 'abu',
-            age: 45,
-            place: 'ekm',
-            profilepic: null
-        },
-        {
-            name: 'abi',
-            age: 44,
-            place: 'aluva',
-            profilepic: 'https://expertphotography.b-cdn.net/wp-content/uploads/2020/08/profile-photos-4.jpg'
-        },
-        {
-            name: 'faiz',
-            age: 42,
-            place: 'edplly',
-            profilepic: null
-        },
-        {
-            name: 'boss',
-            age: 40,
-            place: 'klmsry',
-            profilepic: null
-        },
+    }, [search])
 
-    ])
+    function getData(id) {
+        axios.get(`http://www.omdbapi.com/?apikey=169950b9&i=${id}`).then((res) => {
+            console.log('helloo', res);
+            setMovie(res.data)
+setState(true)
+            setUsers([])
+
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
 
     return (
-        <div className="card-container">
-            {
-                users.map((obj, index) => {
 
-                    return (
+        <div className="card-search">
 
-                        <div className="card" key={index}>
-                            <img height='105px' width='150px' src={!obj.profilepic ? noPic : obj.profilepic} alt="" />
-                            <h1>{obj.title}</h1>
-                            <h1>{obj.id}</h1>
-                            <h1>{obj.place}</h1>
+            <input onChange={getValue} type="text" placeholder="search" />
+            <div className="card-container">
+                {
+                    users?.map((obj, index) => {
+                        return (
+                            <h1 onClick={() => { getData(obj.imdbID) }} key={index}>{obj.Title}</h1>
+                        )
+
+                    })
+                }
+
+            </div>
+{state && <div className="card" >
+                <img src={movie.Poster} alt="" />
+                <h3>{movie.Actors}</h3>
+                <h3>{movie.Awards}</h3>
+                <h3>{movie.Country}</h3>
+                <h3>{movie.DVD}</h3>
+                <h3>{movie.Rated}</h3>
+                <h3>{movie.Director}</h3>
+            </div> }
+     
 
 
-                        </div>
-                    )
 
-                })
-            }
-        </div>
-
-
+        </div >
 
     )
 
