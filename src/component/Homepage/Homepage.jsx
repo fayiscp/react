@@ -14,7 +14,7 @@ function Homepage() {
     let [users, setUsers] = useState([])
     let [search, setSearch] = useState('')
     let [movie, setMovie] = useState({})
-    let [state,setState]=useState(false)
+    let [state, setState] = useState(false)
 
     function getValue(event) {
         console.log(event.target.value);
@@ -22,7 +22,7 @@ function Homepage() {
     }
 
     useEffect(() => {
-        axios.get(`http://www.omdbapi.com/?apikey=169950b9&s=${search}`).then((res) => {
+        axios.get(`http://www.omdbapi.com/?apikey=s=${search}`).then((res) => {
             console.log('helloo', res);
             setUsers(res.data.Search)
 
@@ -36,7 +36,7 @@ function Homepage() {
         axios.get(`http://www.omdbapi.com/?apikey=169950b9&i=${id}`).then((res) => {
             console.log('helloo', res);
             setMovie(res.data)
-setState(true)
+            setState(true)
             setUsers([])
 
         }).catch((err) => {
@@ -60,7 +60,7 @@ setState(true)
                 }
 
             </div>
-{state && <div className="card" >
+            {state && <div className="card" >
                 <img src={movie.Poster} alt="" />
                 <h3>{movie.Actors}</h3>
                 <h3>{movie.Awards}</h3>
@@ -68,8 +68,8 @@ setState(true)
                 <h3>{movie.DVD}</h3>
                 <h3>{movie.Rated}</h3>
                 <h3>{movie.Director}</h3>
-            </div> }
-     
+            </div>}
+
 
 
 
